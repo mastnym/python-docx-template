@@ -386,7 +386,9 @@ class RichText(object):
                         bold=False,
                         italic=False,
                         underline=False,
-                        strike=False):
+                        strike=False,
+                        superscript=False,
+                        subscript=False):
 
 
         if not isinstance(text, six.text_type):
@@ -418,6 +420,10 @@ class RichText(object):
             prop += u'<w:u w:val="%s"/>' % underline
         if strike:
             prop += u'<w:strike/>'
+        if subscript:
+            prop += u'<w:vertAlign w:val="subscript"/>'
+        if superscript:
+            prop += u'<w:vertAlign w:val="superscript"/>'
 
         self.xml += u'<w:r>'
         if prop:
